@@ -4,7 +4,9 @@
 
 [![](https://dcbadge.vercel.app/api/server/eWsVUJrnG5)](https://discord.gg/GbxmdGhZjq)
 
-Without the right tools and methods, scraping Google Flights listings can get quite challenging. In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**. 
+In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/). 
+
+We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**. 
 
 Head to our blog to see the [complete article](https://oxylabs.io/blog/how-to-scrape-google-flights) with in-depth explanations and images for a visual reference.
 
