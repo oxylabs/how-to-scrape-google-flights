@@ -4,9 +4,9 @@
 
 [![](https://dcbadge.vercel.app/api/server/eWsVUJrnG5)](https://discord.gg/GbxmdGhZjq)
 
-In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/). 
+In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
 
-We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**. 
+We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**.
 
 Head to our blog to see the [complete article](https://oxylabs.io/blog/how-to-scrape-google-flights) with in-depth explanations and images for a visual reference.
 
@@ -25,7 +25,7 @@ pip install bs4
 
 ## 2. Creating core structure
 
-To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (you can get **a free 7-day trial** for it) and return the scraped HTML: 
+To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (you can get **a free 7-day trial** for it) and return the scraped HTML:
 
 ```python
 def get_flights_html(url):
@@ -51,7 +51,7 @@ def get_flights_html(url):
 
 Make sure to change up `USERNAME` and `PASSWORD` with your actual Oxylabs credentials.
 
-Next up, we’ll create a function that accepts a `BeautifulSoup` object created from the HTML of the whole page. This function will create and return an array of objects containing information from individual flight listings. Let’s try to form the function in such a way that makes it easily extendible if required: 
+Next up, we’ll create a function that accepts a `BeautifulSoup` object created from the HTML of the whole page. This function will create and return an array of objects containing information from individual flight listings. Let’s try to form the function in such a way that makes it easily extendible if required:
 
 ```python
 def extract_flight_information_from_soup(soup_of_the_whole_page):
@@ -80,7 +80,7 @@ def extract_flights_data_from_urls(urls):
         html = get_flights_html(url)
 
         soup = BeautifulSoup(html,'html.parser')
-    
+
         flights = extract_flight_information_from_soup(soup)
 
         constructed_flight_results.append({
@@ -153,7 +153,7 @@ def get_airline(soup_element):
 
     for span in spans:
         result = result + span.get_text() + "; "
-    
+
     return result
 ```
 
@@ -175,7 +175,7 @@ def extract_flight_information_from_soup(soup_of_the_whole_page):
             flight = {
                 "airline": airline,
                 "time": time,
-                "price": price 
+                "price": price
             }
 
             flights.append(flight)
@@ -217,7 +217,7 @@ def get_airline(soup_element):
 
     for span in spans:
         result = result + span.get_text() + "; "
-    
+
     return result
 
 
@@ -264,7 +264,7 @@ def extract_flight_information_from_soup(soup_of_the_whole_page):
             flight = {
                 "airline": airline,
                 "time": time,
-                "price": price 
+                "price": price
             }
 
             flights.append(flight)
@@ -279,7 +279,7 @@ def extract_flights_data_from_urls(urls):
         html = get_flights_html(url)
 
         soup = BeautifulSoup(html,'html.parser')
-    
+
         flights = extract_flight_information_from_soup(soup)
 
         constructed_flight_results.append({
