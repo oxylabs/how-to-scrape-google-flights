@@ -4,6 +4,21 @@
 
 [![](https://dcbadge.vercel.app/api/server/eWsVUJrnG5)](https://discord.gg/GbxmdGhZjq)
 
+  * [Free Google Flights Scraper](#free-google-flights-scraper)
+    + [Prerequisites](#prerequisites)
+    + [Installation](#installation)
+    + [Getting the URL for a Google Flights page](#getting-the-url-for-a-google-flights-page)
+    + [Scraping Google Flights](#scraping-google-flights)
+    + [Notes](#notes)
+  * [Scrape public Google Flights data with Oxylabs API](#scrape-public-google-flights-data-with-oxylabs-api)
+    + [Installing prerequisite libraries](#installing-prerequisite-libraries)
+    + [Creating core structure](#creating-core-structure)
+    + [Getting the price](#getting-the-price)
+     + [Getting the flight time](#getting-the-flight-time)
+     + [Getting the airline name](#getting-the-airline-name)
+     + [Final result](#final-result)
+
+
 ## Free Google Flights Scraper
 
 A free tool used to get data from Google Flights for a provided Google Flights URL.
@@ -70,7 +85,9 @@ In case the code doesn't work or your project is of bigger scale, please refer t
 
 ## Scrape public Google Flights data with Oxylabs API 
 
-In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
+In case you were not able to carry out your project with the free scraper, you may use Oxylabs API instead. 
+
+In this section of the guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
 
 We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**.
 
@@ -83,13 +100,13 @@ Head to our blog to see the [complete article](https://oxylabs.io/blog/how-to-sc
 - [5. Getting the airline name](#5-getting-the-airline-name)
 - [6. Final result](#6-final-result)
 
-## 1. Installing prerequisite libraries
+## Installing prerequisite libraries
 
 ```bash
 pip install bs4
 ```
 
-## 2. Creating core structure
+## Creating core structure
 
 To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (you can get **a free 7-day trial** for it) and return the scraped HTML:
 
@@ -184,7 +201,7 @@ def main():
     save_results(constructed_flight_results, results_file)
 ```
 
-## 3. Getting the price
+## Getting the price
 
 ```python
 def get_price(soup_element):
@@ -193,7 +210,7 @@ def get_price(soup_element):
     return price
 ```
 
-## 4. Getting the flight time
+## Getting the flight time
 
 ```python
 def get_time(soup_element):
@@ -207,7 +224,7 @@ def get_time(soup_element):
     return time
 ```
 
-## 5. Getting the airline name
+## Getting the airline name
 
 ```python
 def get_airline(soup_element):
@@ -248,7 +265,7 @@ def extract_flight_information_from_soup(soup_of_the_whole_page):
 
     return flights
 ```
-## 6. Final result
+## Final result
 If we add all of it together, the final product should look something like this.
 
 
