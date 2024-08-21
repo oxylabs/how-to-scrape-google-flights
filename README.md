@@ -4,9 +4,75 @@
 
 [![](https://dcbadge.vercel.app/api/server/eWsVUJrnG5)](https://discord.gg/GbxmdGhZjq)
 
-In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/). 
+## Free Google Flights Scraper
 
-We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**. 
+A free tool used to get data from Google Flights for a provided Google Flights URL.
+
+### Prerequisites
+
+To run this tool, you need to have Python 3.11 installed in your system.
+
+### Installation
+
+Open up a terminal window, navigate to this repository and run this command:
+
+```make install```
+
+### Getting the URL for a Google Flights page
+
+First of all, go to [Google Flights](https://www.google.com/travel/flights) in your browser and select your desired departure and arrival locations along with the dates.
+
+For this example, we'll be scraping flights from Berlin to Paris, two weeks apart. 
+
+After clicking **Search**, you should see something like this.
+
+<img width="1094" alt="image" src="https://github.com/user-attachments/assets/b7ac594c-e1c0-47e7-9c52-66ae06619f24">
+
+Copy and save the URL from your browser, it will be used for scraping the data for this flight configuration.
+
+Here's the URL for this example
+```https://www.google.com/travel/flights/search?tfs=CBwQAhooEgoyMDI0LTA5LTA0agwIAxIIL20vMDE1NnFyDAgDEggvbS8wNXF0ahooEgoyMDI0LTA5LTE4agwIAxIIL20vMDVxdGpyDAgDEggvbS8wMTU2cUABSAFwAYIBCwj___________8BmAEB```
+
+### Scraping Google Flights
+
+To get results from Google Flights, simply run this command in your terminal:
+
+```make scrape URL="<your_google_flights_url>"```
+
+With the URL we retrieved earlier, the command would look like this:
+
+```make scrape URL="https://www.google.com/travel/flights/search?tfs=CBwQAhooEgoyMDI0LTA5LTA0agwIAxIIL20vMDE1NnFyDAgDEggvbS8wNXF0ahooEgoyMDI0LTA5LTE4agwIAxIIL20vMDVxdGpyDAgDEggvbS8wMTU2cUABSAFwAYIBCwj___________8BmAEB"```
+
+Make sure to surround the URL with quotation marks, otherwise the tool might have trouble parsing it.
+
+After running the command, your terminal should look something like this:
+
+<img width="1143" alt="image" src="https://github.com/user-attachments/assets/c43eb93c-176a-4885-81cd-32dc4efb3b0f">
+
+After the tool has finished running, you should notice that a `flights.csv` file appeared in your current directory.
+
+This data in this file has these columns for the Google Flights data based on your provided URL:
+
+- `price` - The full price of a flight.
+- `departure_time` - The departure time of a flight.
+- `arrival_time` - The arrival time of a flight.
+- `airline` - The airline, or multiple airlines that operate the flight.
+- `stops` - The number of stops between the departure and arrival locations.
+- `full_detail` - The full detail of the flight in plain text.
+  
+Here's an example of how the data can look like:
+
+<img width="997" alt="image" src="https://github.com/user-attachments/assets/c1803749-6fa7-4828-8c59-a1bbaa803144">
+
+### Notes
+
+In case the code doesn't work or your project is of bigger scale, please refer to the second part of the tutorial. There, we showcase how to scrape public data with Oxylabs Scraper API.
+
+## Scrape public Google Flights data with Oxylabs API 
+
+In this quick guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
+
+We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**.
 
 Head to our blog to see the [complete article](https://oxylabs.io/blog/how-to-scrape-google-flights) with in-depth explanations and images for a visual reference.
 
@@ -25,7 +91,7 @@ pip install bs4
 
 ## 2. Creating core structure
 
-To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (you can get **a free 7-day trial** for it) and return the scraped HTML: 
+To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (you can get **a free 7-day trial** for it) and return the scraped HTML:
 
 ```python
 def get_flights_html(url):
@@ -51,7 +117,7 @@ def get_flights_html(url):
 
 Make sure to change up `USERNAME` and `PASSWORD` with your actual Oxylabs credentials.
 
-Next up, we’ll create a function that accepts a `BeautifulSoup` object created from the HTML of the whole page. This function will create and return an array of objects containing information from individual flight listings. Let’s try to form the function in such a way that makes it easily extendible if required: 
+Next up, we’ll create a function that accepts a `BeautifulSoup` object created from the HTML of the whole page. This function will create and return an array of objects containing information from individual flight listings. Let’s try to form the function in such a way that makes it easily extendible if required:
 
 ```python
 def extract_flight_information_from_soup(soup_of_the_whole_page):
@@ -80,7 +146,7 @@ def extract_flights_data_from_urls(urls):
         html = get_flights_html(url)
 
         soup = BeautifulSoup(html,'html.parser')
-    
+
         flights = extract_flight_information_from_soup(soup)
 
         constructed_flight_results.append({
@@ -153,7 +219,7 @@ def get_airline(soup_element):
 
     for span in spans:
         result = result + span.get_text() + "; "
-    
+
     return result
 ```
 
@@ -175,7 +241,7 @@ def extract_flight_information_from_soup(soup_of_the_whole_page):
             flight = {
                 "airline": airline,
                 "time": time,
-                "price": price 
+                "price": price
             }
 
             flights.append(flight)
@@ -217,7 +283,7 @@ def get_airline(soup_element):
 
     for span in spans:
         result = result + span.get_text() + "; "
-    
+
     return result
 
 
@@ -264,7 +330,7 @@ def extract_flight_information_from_soup(soup_of_the_whole_page):
             flight = {
                 "airline": airline,
                 "time": time,
-                "price": price 
+                "price": price
             }
 
             flights.append(flight)
@@ -279,7 +345,7 @@ def extract_flights_data_from_urls(urls):
         html = get_flights_html(url)
 
         soup = BeautifulSoup(html,'html.parser')
-    
+
         flights = extract_flight_information_from_soup(soup)
 
         constructed_flight_results.append({
