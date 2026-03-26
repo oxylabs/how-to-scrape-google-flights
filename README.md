@@ -87,7 +87,7 @@ In case the code doesn't work or your project is of bigger scale, please refer t
 
 In case you were not able to carry out your project with the free scraper, you may use Oxylabs API instead. 
 
-In this section of the guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (a part of Web Scraper API). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
+In this section of the guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google) (a part of Web Scraper API). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
 
 We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**.
 
