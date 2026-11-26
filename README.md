@@ -1,6 +1,6 @@
 # How to Scrape Google Flights with Python
 
-[![Oxylabs promo code](https://raw.githubusercontent.com/oxylabs/how-to-scrape-google-scholar/refs/heads/main/Google-Scraper-API-1090x275.png)](https://oxylabs.io/products/scraper-api/serp/google?utm_source=877&utm_medium=affiliate&groupid=877&utm_content=how-to-scrape-google-flights-github&transaction_id=102c8d36f7f0d0e5797b8f26152160)
+[![Oxylabs promo code](https://raw.githubusercontent.com/oxylabs/how-to-scrape-google-scholar/refs/heads/main/Google-Scraper-API-1090x275.png)](https://oxylabs.io/products/scraper-api/serp/google?utm_source=github&utm_medium=referral&utm_content=how-to-scrape-google-flights&utm_campaign=banner&groupid=877)
 
 <p align="left">
   <a href="https://dashboard.oxylabs.io"><img src="https://img.shields.io/badge/%F0%9F%9A%80_Get_Started-FF6B35?style=for-the-badge" alt="Get started"></a>
@@ -93,11 +93,11 @@ In case the code doesn't work or your project is of bigger scale, please refer t
 
 In case you were not able to carry out your project with the free scraper, you may use Oxylabs API instead. 
 
-In this section of the guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google) (a part of Web Scraper API). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
+In this section of the guide, we’re going to demonstrate how to scrape public data from **flight pages** and generate **search results** with Python and [Oxylabs Google Flights API](https://oxylabs.io/products/scraper-api/serp/google?utm_source=github&utm_medium=referral&utm_content=how-to-scrape-google-flights&groupid=877) (a part of Web Scraper API). To use the Oxylabs API, you'll need an **active subscription** – you can get a **free trial** by signing up [via the self-service dashboard](https://dashboard.oxylabs.io/).
 
 We’ll gather all sorts of data, including **price**, **flight time**, and **airline name**.
 
-Head to our blog to see the [complete article](https://oxylabs.io/blog/how-to-scrape-google-flights) with in-depth explanations and images for a visual reference.
+Head to our blog to see the [complete article](https://oxylabs.io/blog/how-to-scrape-google-flights?utm_source=github&utm_medium=referral&utm_content=how-to-scrape-google-flights&groupid=877) with in-depth explanations and images for a visual reference.
 
 - [1. Installing prerequisite libraries](#1-installing-prerequisite-libraries)
 - [2. Creating core structure](#2-creating-core-structure)
@@ -114,7 +114,7 @@ pip install bs4
 
 ## Creating core structure
 
-To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights) (you can get **a free 7-day trial** for it) and return the scraped HTML:
+To start off, let’s create a function that will take a URL as a parameter, scrape that URL with [Google Flights API](https://oxylabs.io/products/scraper-api/serp/google/flights?utm_source=github&utm_medium=referral&utm_content=how-to-scrape-google-flights&groupid=877) (you can get **a free 7-day trial** for it) and return the scraped HTML:
 
 ```python
 def get_flights_html(url):
